@@ -214,8 +214,11 @@ def EMA(data,column='close',value=14): #simple moving average
 
 
 ##Get Data from csv files compressed with gzip format
-def getData(ForexPair,year,timeFrame, date_index=False): #TF is either 1H or 1M
-    data = pd.read_csv('Compressed_Forex_'+timeFrame+'_(gzip)/'+str(year)+'/Compressed_'+ForexPair+'_'+str(year)+'_'+timeFrame+'_.csv', compression='gzip')
+def getData(ForexPair,year,timeFrame, date_index=False, drive=False): #TF is either 1H or 1M
+    if drive==True:
+        data = pd.read_csv('drive/Colab/Trading/Compressed_Forex_'+timeFrame+'_(gzip)/'+str(year)+'/Compressed_'+ForexPair+'_'+str(year)+'_'+timeFrame+'_.csv', compression='gzip')
+    else:
+        data = pd.read_csv('Compressed_Forex_'+timeFrame+'_(gzip)/'+str(year)+'/Compressed_'+ForexPair+'_'+str(year)+'_'+timeFrame+'_.csv', compression='gzip')
     
     ##Rename columns
     if date_index == True:
